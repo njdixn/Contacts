@@ -1,0 +1,40 @@
+body {
+  font-family: Calibri, sans-serif;
+  background-color: white;
+  padding: 20px;
+}
+
+.container {
+  max-width: 600px;
+  margin: auto;
+  background: white;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px lightgray;
+}
+
+h1 {
+  text-align: center;
+  color: black;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+table, th, td {
+  border: 1px solid lightgray;
+}
+
+th, td {
+  padding: 10px;
+  text-align: center;
+}
+
+#outputMessage {
+  margin-top: 20px;
+  font-size: 1.1em;
+  color: darkcyan;
+}

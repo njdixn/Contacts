@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Nikole Dixon">
+    <title>Bear Ninja Hunter Game</title>
+    <link rel="stylesheet" href="css/styles.css">
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Your Contacts!</h1>
+
+      <table id="contactList">
+        <thead>
+          <tr>
+            <th>Contact #</th>
+            <th>Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- JavaScript will fill this -->
+        </tbody>
+      </table>
+
+      <div id="outputMessage"> <!--What contacts were selected-->
+      </div>
+    </div>
+
+    <script>
+      // Contact name array
+      const contacts = ['Arnold', 'Sly', 'Dwayne', 'Vin', 'JCVD', 'Steven'];
+
+      // Get reference to the <tbody> element inside the contactList table
+      const contactTableBody = document.querySelector('#contactList tbody');
+
+      // Get reference to the output message
+      const outputDiv = document.getElementById('outputMessage');
+
+      // Display all contacts inside the table
+      for (let i = 0; i < contacts.length; i++) {
+        // Create a new table row
+        const row = document.createElement('tr');
+
+        // Create cell for contact number
+        const contactIDCell = document.createElement('td');
+
+        // Put the contact number in
+        contactIDCell.textContent = i;
+
+        // Create cell for contact names
+        const nameCell = document.createElement('td');
+
+        // Put the contact name in
+        nameCell.textContent = contacts[i];
+
+        // Append both cells to the row
+        row.appendChild(contactIDCell);
+        row.appendChild(nameCell);
+
+        // Append row to the table body
+        contactTableBody.appendChild(row);
+      }
+
+      // Start interaction with the user
+      let keepGoing = true; // Used to control the loop
+
+      // While loop for multiple searches
+      while (keepGoing) {
+        // To get a contact number from user
+        let userInput = prompt("Please enter a contact number (0-5) to view the contact name:");
+
+        // Presses cancel or doesn't type anything error checking
+        if (userInput === null || userInput.trim() === '') {
+          alert("You did not enter anything. Goodbye!");
+          break; // Exit the loop
+        }
+
+        // Convert the input to a number
+        let contactNumber = Number(userInput);
+
+        // Check if it's a valid contact number within bounds
+        if (contactNumber >= 0 && contactNumber <= 5) {
+        
+        // Get the name at that contact #
+          let selectedName = contacts[contactNumber];
+
+          // Display message in console and HTML
+          console.log(`You selected ${selectedName}.`);
+          outputDiv.innerHTML  = `You selected ${selectedName}.`;
+
+        } else {
+          // Invalid input message
+          alert("That contact number does not exist. Please enter a number from 0 to 5.");
+          continue; 
+        }
+
+        // Ask the user if they want to search again
+        let searchAgain = confirm("Would you like to search for another contact?");
+
+        // If they click "Cancel", end the loop
+        if (!searchAgain) {
+          keepGoing = false;
+          alert("Thanks for using the Contacts app!");
+        }
+      }
+    </script>
+
+  </body>
+</html>
